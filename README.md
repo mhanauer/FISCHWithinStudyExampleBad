@@ -38,8 +38,13 @@ If you do any type of moderator effect, the data will be unbalanced.  If no mode
 
 This won't work with unbalanced designs.  Ok so we have repeated measures and unbalanced designs so cannot do this design.
 ```{r}
+library(car)
 fit = aov(PPM ~ time + Error(subject/time), data = dat)
+fitTest = aov(PPM ~ time, data = dat)
 summary(fit)
+fitMod = Anova(fit, type = "III")
+
+summary(fitMod)
 ```
  
  
